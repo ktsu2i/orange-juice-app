@@ -1,6 +1,7 @@
 package com.example.rolldice
 
 import android.os.Bundle
+import android.text.style.BackgroundColorSpan
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -36,8 +37,6 @@ fun RollDiceWithButtonAndImage(
         .wrapContentSize(align = Alignment.Center)
 )
 {
-    var gameCount: Int = 0
-
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally)
     {
         var status by remember { mutableStateOf(1) }
@@ -55,11 +54,12 @@ fun RollDiceWithButtonAndImage(
             else -> R.string.tapEmptyGlassText
         }
 
-        var requiredNumOfTaps: Int = (5..10).random()
-        var tapCount = 0
+        var gameCount: Int = 0
+        var numOfRequiredTaps: Int = (5..10).random()
+        var tapCount: Int = 0
 
         Button(onClick = {
-            if (status == 1 && status == 3)
+            if (status == 1)
             {
                 status++
             }
@@ -67,17 +67,23 @@ fun RollDiceWithButtonAndImage(
             {
                 tapCount++
 
-                if (tapCount == requiredNumOfTaps)
+                if (tapCount == numOfRequiredTaps)
                 {
                     status++
                 }
             }
+            else if (status == 3)
+            {
+                status++
+            }
             else
             {
-                status = 0
-                tapCount = 0
-                requiredNumOfTaps = (5..10).random()
                 gameCount++
+
+                // initialize everything
+                status = 1
+                tapCount = 0
+                numOfRequiredTaps = (5..10).random()
             }
         }) {
             Image(
@@ -90,7 +96,7 @@ fun RollDiceWithButtonAndImage(
         
         Text(text = stringResource(id = textID))
 
-        Spacer(modifier = Modifier.height(50.dp))
+        Spacer(modifier = Modifier.height(70.dp))
 
         Text("Game count: $gameCount")
     }
