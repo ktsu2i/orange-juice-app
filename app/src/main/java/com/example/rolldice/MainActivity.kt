@@ -40,6 +40,7 @@ fun RollDiceWithButtonAndImage(
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally)
     {
         var status by remember { mutableStateOf(1) }
+        var gameCount by remember { mutableStateOf(0) }
         var diceImageID = when (status) {
             1 -> R.drawable.orange_tree
             2 -> R.drawable.orange_fruit
@@ -54,7 +55,7 @@ fun RollDiceWithButtonAndImage(
             else -> R.string.tapEmptyGlassText
         }
 
-        var gameCount: Int = 0
+//        var gameCount: Int = 0
         var numOfRequiredTaps: Int = (5..10).random()
         var tapCount: Int = 0
 
