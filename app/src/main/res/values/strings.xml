@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Roll Dice</string>
+    <string name="RollDiceBtnText">Roll!</string>
+    <string name="tapOrangeTreeText">Tap the orange tree to pick an orange</string>
+    <string name="tapOrangeText">Tap the orange to squeeze and make orange juice</string>
+    <string name="tapOrangeJuiceText">Tap the orange juice to drink</string>
+    <string name="tapEmptyGlassText">Tap the empty glass to start again</string>
+</resources>
